@@ -23,6 +23,20 @@ export default {
   */
   loading: { color: '#3B8070' },
   /*
+  ** Third party modules
+  */
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
+  ],
+  /*
+  ** Proxy Config
+  */
+  proxy: {
+    '/json': {target: 'http://localhost:8000', pathRewrite: {'^/json/': ''}},
+    '/movie': {target: 'http://localhost:8000/SampleVideo_1280x720_2mb.mp4', pathRewrite: {'.*': ''}}
+  },
+  /*
   ** Build configuration
   */
   build: {
