@@ -52,8 +52,8 @@
       return {
         drawer: false,
         items: [
-          { icon: 'apps', title: 'Welcome', to: '/' },
-          { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
+          { icon: 'apps', title: 'All', to: '/' },
+          { icon: 'bubble_chart', title: 'Recent', to: '/recent' }
         ],
         miniVariant: false,
         title: 'ちゃアニ Neo'
