@@ -1,9 +1,9 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <title-tree :titles="titles"></title-tree>
-    </v-flex>
-  </v-layout>
+    <v-layout column justify-center align-center>
+        <v-flex xs12 sm8 md6>
+            <title-tree :titles="titles" @selected-subtitle="navigateTo($event)"></title-tree>
+        </v-flex>
+    </v-layout>
 </template>
 
 <script>
@@ -15,6 +15,14 @@
       const data = await app.$axios.$get('/json/getTitleArray.php')
       const titles = data.titleArray.map(title => Object.assign(title, {subTitles: []}))
       return {titles}
+    },
+    methods: {
+      navigateTo: function (event) {
+        this.$router.push({
+          path: 'video',
+          query: {title: event.title.title, subtitle: event.subTitle.title}
+        })
+      }
     }
   }
 </script>

@@ -3,7 +3,10 @@
         <v-expansion-panel-content v-for="(title, i) in titles" :key="i">
             <div slot="header" @click="fetchSubtitles(title)">{{title.title}}</div>
             <ul>
-                <li class="subtitle" v-for="subTitle in title.subTitles" @click="$emit('selected-subtitle', subTitle)">
+                <li class="subtitle"
+                    v-for="subTitle in title.subTitles"
+                    @click="$emit('selected-subtitle', {title: title, subTitle:subTitle})"
+                >
                     {{subTitle.title}}
                 </li>
             </ul>
