@@ -31,7 +31,8 @@ export default {
   */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    '@nuxtjs/pwa'
   ],
   /*
   ** Proxy Config
@@ -39,6 +40,12 @@ export default {
   proxy: {
     '/json': {target: 'http://localhost:8000', pathRewrite: {'^/json/': ''}},
     '/movie': {target: 'http://localhost:8000/SampleVideo_1280x720_2mb.mp4', pathRewrite: {'.*': ''}}
+  },
+  /*
+  ** PWA config
+  */
+  workbox: {
+    dev: true
   },
   /*
   ** Build configuration
