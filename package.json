@@ -15,6 +15,7 @@
     "@nuxtjs/axios": "^5.3.3",
     "@nuxtjs/proxy": "^1.2.4",
     "nuxt": "^2.1.0",
+    "vue-video-player": "^5.0.2",
     "vuetify": "^1.2.6"
   },
   "devDependencies": {
