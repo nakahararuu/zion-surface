@@ -10,7 +10,6 @@
     computed: {
       playerOptions: function () {
         return {
-          muted: true,
           preload: 'auto',
           language: 'ja',
           fluid: true,
