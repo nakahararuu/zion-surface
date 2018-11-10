@@ -1,0 +1,35 @@
+version: '3'
+services:
+  web:
+    environment:
+      - CADDYPATH=/etc/caddycerts
+    volumes:
+      - '$HOME/.caddy:/etc/caddycerts'
+      - '$PWD/Caddyfile:/etc/Caddyfile'
+    ports:
+      - '80:80'
+      - '443:443'
+      - '2015:2015'
+    image: abiosoft/caddy
+  node:
+    image: 'node:8'
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./:/home/node/app
+    expose:
+      - '3000'
+    command: bash -c "npm install && npm run dev"
+  backend:
+    image: 'node:8'
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./:/home/node/app
+    expose:
+      - '8000'
+    command: bash -c "npm install && npm run mock"

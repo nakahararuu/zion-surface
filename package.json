@@ -9,7 +9,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "mock": "json-server --watch --static test_data --port 8000 test_data/db.json"
+    "mock": "json-server --watch --static test_data --host 0.0.0.0 --port 8000 test_data/db.json"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.3",
@@ -32,5 +32,10 @@
     "json-server": "^0.14.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1"
+  },
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0"
+    }
   }
 }

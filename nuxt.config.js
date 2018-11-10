@@ -38,8 +38,8 @@ export default {
   ** Proxy Config
   */
   proxy: {
-    '/json': {target: 'http://localhost:8000', pathRewrite: {'^/json/': ''}},
-    '/movie': {target: 'http://localhost:8000/SampleVideo_1280x720_2mb.mp4', pathRewrite: {'.*': ''}}
+    '/json': {target: 'http://backend:8000', pathRewrite: {'^/json/': ''}},
+    '/movie': {target: 'http://backend:8000/SampleVideo_1280x720_2mb.mp4', pathRewrite: {'.*': ''}}
   },
   /*
   ** PWA config
