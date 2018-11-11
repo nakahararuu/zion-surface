@@ -43,3 +43,8 @@ $ curl https://zion.example.com
     - with SSR
 - automatic HTTPS
 
+## TODO
+- filtering by title
+- play next title automatically
+- UI optimisation
+
