@@ -12,6 +12,7 @@
     "mock": "json-server --watch --static test_data --host 0.0.0.0 --port 8000 test_data/db.json"
   },
   "dependencies": {
+    "@nuxtjs/auth": "^4.5.3",
     "@nuxtjs/axios": "^5.3.3",
     "@nuxtjs/proxy": "^1.2.4",
     "@nuxtjs/pwa": "^2.6.0",

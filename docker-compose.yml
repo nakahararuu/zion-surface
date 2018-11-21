@@ -5,7 +5,7 @@ services:
       - CADDYPATH=/etc/caddycerts
     volumes:
       - '$HOME/.caddy:/etc/caddycerts'
-      - '$PWD/Caddyfile:/etc/Caddyfile'
+      - '$PWD/Caddyfile_front:/etc/Caddyfile'
     ports:
       - '80:80'
       - '443:443'
@@ -33,3 +33,25 @@ services:
     expose:
       - '8000'
     command: 'npx json-server --watch --static ./ --host 0.0.0.0 --port 8000 ./db.json'
+  auth:
+    image: 'node:8'
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./test_data/auth_api:/home/node/app
+    expose:
+      - '3000'
+    command: bash -c "npm install && npm start"
+  resource:
+    image: jwt_caddy
+    environment:
+      - JWT_SECRET=my_secret
+    volumes:
+      - '$HOME/.caddy:/etc/caddycerts'
+      - ./test_data:/srv
+      - ./Caddyfile_resource:/etc/Caddyfile
+    expose:
+      - '2015'
+

@@ -1,0 +1,7 @@
+# update 0.0.0.0 to your domain on production
+0.0.0.0 {
+  jwt {
+      path /
+  }
+}
+

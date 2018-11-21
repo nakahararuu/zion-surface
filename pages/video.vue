@@ -23,8 +23,7 @@
     },
     asyncData (context) {
       return {
-        title: context.query['title'],
-        subTitle: context.query['subtitle']
+        title: context.query['title'], subTitle: context.query['subtitle']
       }
     },
     mounted () {

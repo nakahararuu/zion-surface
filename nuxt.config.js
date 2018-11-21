@@ -32,14 +32,45 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/auth'
   ],
   /*
   ** Proxy Config
   */
   proxy: {
+    '/auth': {target: 'http://auth:3000', pathRewrite: {'^/auth/': ''}},
     '/json': {target: 'http://backend:8000', pathRewrite: {'^/json/': ''}},
-    '/movie': {target: 'http://backend:8000/SampleVideo_1280x720_2mb.mp4', pathRewrite: {'.*': ''}}
+    '/movie': {target: 'http://resource:2015/SampleVideo_1280x720_2mb.mp4', pathRewrite: {'.*': ''}}
+  },
+  axios: {
+    proxy: true
+  },
+  /*
+  ** middleware
+  */
+  router: {
+    middleware: ['auth']
+  },
+  /*
+  ** auth
+  */
+  auth: {
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      callback: '/callback',
+      home: '/'
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: {url: 'auth/login', method: 'post', propertyName: 'token.accessToken'},
+          logout: {url: 'auth/logout'},
+          user: {url: 'auth/user'}
+        }
+      }
+    }
   },
   /*
   ** PWA config
