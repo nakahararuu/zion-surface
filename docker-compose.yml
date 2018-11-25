@@ -44,7 +44,7 @@ services:
       - '3000'
     command: bash -c "npm install && npm start"
   resource:
-    image: jwt_caddy
+    image: nakahararuu/zion_resource
     environment:
       - JWT_SECRET=my_secret
     volumes:
