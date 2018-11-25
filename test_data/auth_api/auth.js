@@ -25,7 +25,7 @@ app.use(
 // [POST] /login
 app.post('/login', (req, res, next) => {
   const { username, password } = req.body
-  const valid = username === 'demo' && password === 'demo'
+  const valid = username === process.env.USER_NAME && password === process.env.PASSWORD
 
   if (!valid) {
     throw new Error('Invalid username or password')

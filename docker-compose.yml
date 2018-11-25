@@ -38,6 +38,8 @@ services:
     working_dir: /home/node/app
     environment:
       - NODE_ENV=development
+      - USER_NAME=${USER_NAME}
+      - PASSWORD=${PASSWORD}
     volumes:
       - ./test_data/auth_api:/home/node/app
     expose:
