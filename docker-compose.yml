@@ -40,6 +40,7 @@ services:
       - NODE_ENV=development
       - USER_NAME=${USER_NAME}
       - PASSWORD=${PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
     volumes:
       - ./test_data/auth_api:/home/node/app
     expose:
@@ -48,7 +49,7 @@ services:
   resource:
     image: nakahararuu/zion_resource
     environment:
-      - JWT_SECRET=my_secret
+      - JWT_SECRET=${JWT_SECRET}
     volumes:
       - '$HOME/.caddy:/etc/caddycerts'
       - ./test_data:/srv

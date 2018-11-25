@@ -12,9 +12,10 @@ app.use(cookieParser())
 app.use(bodyParser.json())
 
 // JWT middleware
+const jwtSecret = process.env.JWT_SECRET
 app.use(
   jwt({
-    secret: 'my_secret'
+    secret: jwtSecret
   }).unless({
     path: '/login'
   })
@@ -38,7 +39,7 @@ app.post('/login', (req, res, next) => {
       name: 'User ' + username,
       scope: ['test', 'user']
     },
-    'my_secret'
+    jwtSecret
   )
 
   res.json({
