@@ -3,12 +3,11 @@ services:
   web:
     environment:
       - CADDYPATH=/etc/caddycerts
+      - HOST_NAME=${HOST_NAME}
     volumes:
       - '$HOME/.caddy:/etc/caddycerts'
       - '$PWD/Caddyfile_front:/etc/Caddyfile'
     ports:
-      - '80:80'
-      - '443:443'
       - '2015:2015'
     image: abiosoft/caddy
   node:

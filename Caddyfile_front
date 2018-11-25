@@ -1,5 +1,4 @@
-# update 0.0.0.0 to your domain on production
-0.0.0.0 {
+{$HOST_NAME} {
   proxy / node:3000
 }
 
