@@ -33,7 +33,8 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
     '@nuxtjs/pwa',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    'cookie-universal-nuxt'
   ],
   /*
   ** Proxy Config
