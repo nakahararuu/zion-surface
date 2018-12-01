@@ -7,6 +7,7 @@ Note: Currently, Zion-Surface is PoC project. it doesn't use actually ちゃア�
 ## Build Setup
 ``` bash
 # run dev server on http://localhost:2015
+$ cp .env.default .env
 $ docker-compose up
 ```
 

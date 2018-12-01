@@ -14,3 +14,6 @@ sw.*
 .idea/workspace.xml
 .idea/usage.statistics.xml
 .idea/tasks.xml
+
+# dotenv
+.env
