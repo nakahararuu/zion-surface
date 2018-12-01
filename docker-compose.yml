@@ -12,6 +12,7 @@ services:
       - '443:443'
       - '2015:2015'
     image: abiosoft/caddy
+    restart: always
   node:
     image: 'node:8'
     user: "node"
@@ -23,3 +24,4 @@ services:
     expose:
       - '3000'
     command: bash -c "npm install && ${NUXT_CMD}"
+    restart: always
