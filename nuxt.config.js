@@ -40,9 +40,9 @@ export default {
   ** Proxy Config
   */
   proxy: {
-    '/auth': {target: 'http://auth:3000', pathRewrite: {'^/auth/': ''}},
-    '/json': {target: 'http://backend:8000', pathRewrite: {'^/json/': ''}},
-    '/movie': {target: 'http://resource:2015/SampleVideo_1280x720_2mb.mp4', pathRewrite: {'.*': ''}}
+    '/auth': {target: 'http://auth:8080', pathRewrite: {'^/auth/': ''}},
+    '/json': {target: 'http://web_core:2015'},
+    '/movie': {target: 'http://web_core:2015/movie/', pathRewrite: {'.*': ''}}
   },
   axios: {
     proxy: true
@@ -51,7 +51,7 @@ export default {
   ** middleware
   */
   router: {
-    middleware: ['auth']
+    middleware: ['auth', 'auth_resource']
   },
   /*
   ** auth
@@ -66,9 +66,14 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login: {url: 'auth/login', method: 'post', propertyName: 'token.accessToken'},
-          logout: {url: 'auth/logout'},
-          user: {url: 'auth/user'}
+          login: {
+            url: 'auth/login',
+            method: 'post',
+            propertyName: false,
+            headers: {'content-type': 'application/json'}
+          },
+          logout: false,
+          user: false
         }
       }
     }

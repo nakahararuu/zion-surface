@@ -7,7 +7,6 @@
 
 <script>
   export default {
-    middleware: ['auth_resource'],
     computed: {
       playerOptions: function () {
         return {

@@ -1,12 +1,12 @@
 version: '3'
 services:
-  web:
+  web_surface:
     environment:
       - CADDYPATH=/etc/caddycerts
       - HOST_NAME=${HOST_NAME}
     volumes:
       - '$HOME/.caddy:/etc/caddycerts'
-      - '$PWD/Caddyfile_front:/etc/Caddyfile'
+      - '$PWD/Caddyfile_surface:/etc/Caddyfile'
     ports:
       - '2015:2015'
     image: abiosoft/caddy
@@ -21,6 +21,15 @@ services:
     expose:
       - '3000'
     command: bash -c "npm install && ${NUXT_CMD}"
+  web_core:
+    image: nakahararuu/zion_resource
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+    volumes:
+      - ./test_data:/srv
+      - ./Caddyfile_core:/etc/Caddyfile
+    expose:
+      - '2015'
   backend:
     image: 'node:8'
     user: "node"
@@ -33,27 +42,7 @@ services:
       - '8000'
     command: 'npx json-server --watch --static ./ --host 0.0.0.0 --port 8000 ./db.json'
   auth:
-    image: 'node:8'
-    user: "node"
-    working_dir: /home/node/app
-    environment:
-      - NODE_ENV=development
-      - USER_NAME=${USER_NAME}
-      - PASSWORD=${PASSWORD}
-      - JWT_SECRET=${JWT_SECRET}
-    volumes:
-      - ./test_data/auth_api:/home/node/app
+    image: tarent/loginsrv
     expose:
-      - '3000'
-    command: bash -c "npm install && npm start"
-  resource:
-    image: nakahararuu/zion_resource
-    environment:
-      - JWT_SECRET=${JWT_SECRET}
-    volumes:
-      - '$HOME/.caddy:/etc/caddycerts'
-      - ./test_data:/srv
-      - ./Caddyfile_resource:/etc/Caddyfile
-    expose:
-      - '2015'
-
+      - '8080'
+    command: "-jwt-secret ${JWT_SECRET} -simple ${USER_NAME}=${PASSWORD}"
