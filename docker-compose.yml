@@ -8,6 +8,8 @@ services:
       - '$HOME/.caddy:/etc/caddycerts'
       - '$PWD/Caddyfile_surface:/etc/Caddyfile'
     ports:
+      - '80:80'
+      - '443:443'
       - '2015:2015'
     image: abiosoft/caddy
   node:
