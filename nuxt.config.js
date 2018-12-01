@@ -42,7 +42,7 @@ export default {
   proxy: {
     '/auth': {target: 'http://web_core:2015', pathRewrite: {'^/auth/': ''}},
     '/json': {target: 'http://web_core:2015'},
-    '/movie': {target: 'http://web_core:2015/movie/', pathRewrite: {'.*': ''}}
+    '/movie': {target: 'http://web_core:2015/movie/SampleVideo_1280x720_2mb.mp4', pathRewrite: {'.*': ''}}
   },
   axios: {
     proxy: true
