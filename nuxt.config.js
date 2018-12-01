@@ -40,7 +40,7 @@ export default {
   ** Proxy Config
   */
   proxy: {
-    '/auth': {target: 'http://auth:8080', pathRewrite: {'^/auth/': ''}},
+    '/auth': {target: 'http://web_core:2015', pathRewrite: {'^/auth/': ''}},
     '/json': {target: 'http://web_core:2015'},
     '/movie': {target: 'http://web_core:2015/movie/', pathRewrite: {'.*': ''}}
   },
