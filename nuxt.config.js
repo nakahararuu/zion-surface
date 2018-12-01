@@ -73,7 +73,8 @@ export default {
             headers: {'content-type': 'application/json'}
           },
           logout: false,
-          user: false
+          user: {url: 'auth/user'} // TODO should replace to "user: false"
+          // NOTE: https://github.com/nuxt-community/auth-module/issues/213
         }
       }
     }

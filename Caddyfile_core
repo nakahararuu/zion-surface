@@ -11,5 +11,6 @@
 
   ## auth
   proxy /login auth:8080
+  proxy /user auth_dummy:3000 ## https://github.com/nuxt-community/auth-module/issues/213
 }
 

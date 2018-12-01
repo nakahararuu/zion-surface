@@ -25,3 +25,14 @@ services:
     expose:
       - '8080'
     command: "-jwt-secret ${JWT_SECRET} -simple ${USER_NAME}=${PASSWORD}"
+  auth_dummy:
+    image: 'node:8'
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./test_data/auth_api:/home/node/app
+    expose:
+      - '3000'
+    command: bash -c "npm install && npm start"
