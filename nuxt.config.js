@@ -51,7 +51,7 @@ export default {
   ** middleware
   */
   router: {
-    middleware: ['auth', 'auth_resource']
+    middleware: ['auth', 'duplicate_jwt']
   },
   /*
   ** auth
