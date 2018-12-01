@@ -40,9 +40,9 @@ export default {
   ** Proxy Config
   */
   proxy: {
-    '/auth': {target: 'http://web_core:2015', pathRewrite: {'^/auth/': ''}},
-    '/json': {target: 'http://web_core:2015'},
-    '/movie': {target: 'http://web_core:2015'}
+    '/auth': {target: process.env.CORE_URL, pathRewrite: {'^/auth/': ''}},
+    '/json': {target: process.env.CORE_URL},
+    '/movie': {target: process.env.CORE_URL}
   },
   axios: {
     proxy: true

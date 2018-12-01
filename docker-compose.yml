@@ -19,6 +19,7 @@ services:
     working_dir: /home/node/app
     environment:
       - NODE_ENV=development
+      - CORE_URL=${CORE_URL}
     volumes:
       - ./:/home/node/app
     expose:
