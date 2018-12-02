@@ -1,4 +1,7 @@
 export default {
+  env: {
+    videoServerUrl: process.env.CORE_VIDEO_SERVER_URL
+  },
   /*
   ** Headers of the page
   */
@@ -40,9 +43,8 @@ export default {
   ** Proxy Config
   */
   proxy: {
-    '/auth': {target: process.env.CORE_URL, pathRewrite: {'^/auth/': ''}},
-    '/json': {target: process.env.CORE_URL},
-    '/movie': {target: process.env.CORE_URL}
+    '/auth': {target: process.env.CORE_BACKEND_SERVER_URL, pathRewrite: {'^/auth/': ''}},
+    '/json': {target: process.env.CORE_BACKEND_SERVER_URL}
   },
   axios: {
     proxy: true

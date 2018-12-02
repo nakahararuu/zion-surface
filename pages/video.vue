@@ -16,14 +16,16 @@
           playbackRates: [0.7, 1.0, 1.5, 2.0],
           sources: [{
             type: 'video/mp4',
-            src: `/movie/${this.title}/${this.subTitle}`
+            src: `${this.serverUrl}/movie/${this.title}/${this.subTitle}`
           }]
         }
       }
     },
     asyncData (context) {
       return {
-        title: context.query['title'], subTitle: context.query['subtitle']
+        title: context.query['title'],
+        subTitle: context.query['subtitle'],
+        serverUrl: context.env.videoServerUrl
       }
     },
     mounted () {

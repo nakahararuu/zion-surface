@@ -19,7 +19,8 @@ services:
     working_dir: /home/node/app
     environment:
       - NODE_ENV=development
-      - CORE_URL=${CORE_URL}
+      - CORE_VIDEO_SERVER_URL=${CORE_VIDEO_SERVER_URL}
+      - CORE_BACKEND_SERVER_URL=${CORE_BACKEND_SERVER_URL}
     volumes:
       - ./:/home/node/app
     expose:

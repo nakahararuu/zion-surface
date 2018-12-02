@@ -9,6 +9,8 @@ services:
       - ./Caddyfile_core:/etc/Caddyfile
     expose:
       - '2015'
+    ports:
+      - '3015:2015'
     restart: always
   backend:
     image: 'node:8'
