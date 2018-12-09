@@ -5,8 +5,8 @@ services:
     environment:
       - JWT_SECRET=${JWT_SECRET}
     volumes:
-      - ./test_data:/srv
-      - ./Caddyfile_core:/etc/Caddyfile
+      - ./test_data/movie:/srv
+      - ./test_data/Caddyfile_core:/etc/Caddyfile
     expose:
       - '2015'
     restart: always
@@ -17,10 +17,10 @@ services:
     environment:
       - NODE_ENV=development
     volumes:
-      - ./test_data/:/home/node/app
+      - ./test_data/backend_api:/home/node/app
     expose:
       - '8000'
-    command: 'npx json-server --watch --static ./ --host 0.0.0.0 --port 8000 ./db.json'
+    command: 'npx json-server --watch --host 0.0.0.0 --port 8000 ./db.json'
     restart: always
   auth:
     image: tarent/loginsrv

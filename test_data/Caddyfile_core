@@ -1,7 +1,7 @@
 0.0.0.0 {
   ## movie
   jwt /movie
-  rewrite /movie/.* /movie/SampleVideo_1280x720_2mb.mp4
+  rewrite /movie/.* SampleVideo_1280x720_2mb.mp4
 
   ## Backend API
   jwt /json

@@ -6,7 +6,7 @@ services:
       - HOST_NAME=${HOST_NAME}
     volumes:
       - '$HOME/.caddy:/etc/caddycerts'
-      - '$PWD/Caddyfile_surface:/etc/Caddyfile'
+      - '$PWD/Caddyfile:/etc/Caddyfile'
     ports:
       - '80:80'
       - '443:443'
