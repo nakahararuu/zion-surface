@@ -1,28 +1,27 @@
 <template>
-    <v-layout column justify-center align-center>
-        <v-flex xs12 sm8 md6>
-            <title-tree :titles="titles" @selected-subtitle="navigateTo($event)"></title-tree>
+    <v-layout column justify-center>
+        <v-flex xs12 sm8 md6 py-3 pl-5>
+            <RecycleScroller
+                    class="scroller"
+                    :items="titles"
+                    :item-height="50"
+                    :prerender=50
+                    keyField="title"
+                    page-mode
+            >
+                <div class="title" slot-scope="{ item }">
+                    <nuxt-link :to="'titles/' + item.title">{{ item.title }}</nuxt-link>
+                </div>
+            </RecycleScroller>
         </v-flex>
     </v-layout>
 </template>
 
 <script>
-  import TitleTree from '../components/TitleTree'
-
   export default {
-    components: {TitleTree},
     async asyncData ({app}) {
       const data = await app.$axios.$get('/json/getTitleArray.php')
-      const titles = data.titleArray.map(title => Object.assign(title, {subTitles: []}))
-      return {titles}
-    },
-    methods: {
-      navigateTo: function (event) {
-        this.$router.push({
-          path: 'video',
-          query: {title: event.title.title, subtitle: event.subTitle.title}
-        })
-      }
+      return {titles: data.titleArray}
     }
   }
 </script>

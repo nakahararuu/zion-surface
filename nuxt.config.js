@@ -16,7 +16,8 @@ export default {
   },
   plugins: [
     '~/plugins/vuetify.js',
-    {src: '~plugins/nuxt-video-player-plugin.js', ssr: false}
+    {src: '~plugins/nuxt-video-player-plugin.js', ssr: false},
+    {src: '~/plugins/vue-virtual-scroller.js', ssr: false}
   ],
   css: [
     '~/assets/style/app.styl',
