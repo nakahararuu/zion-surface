@@ -11,7 +11,7 @@
         <v-flex mt-5>
             <ul>
                 <li v-for="(sub, index) in subTitles">
-                   <nuxt-link :to="`/titles/${title}?st=${index}`">{{ sub }}</nuxt-link>
+                   <nuxt-link :to="`/titles/${title}?st=${index}`" replace>{{ sub }}</nuxt-link>
                 </li>
             </ul>
         </v-flex>
