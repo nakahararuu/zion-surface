@@ -10,7 +10,7 @@
                     page-mode
             >
                 <div class="title" slot-scope="{ item }">
-                    <nuxt-link :to="'titles/' + item.title">{{ item.title }}</nuxt-link>
+                    <nuxt-link :to="{path: `titles/${item.title}`, query: {st: 0}}">{{ item.title }}</nuxt-link>
                 </div>
             </RecycleScroller>
         </v-flex>

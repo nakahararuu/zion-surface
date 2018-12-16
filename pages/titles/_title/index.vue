@@ -9,14 +9,26 @@
             </div>
         </v-flex>
         <v-flex mt-5>
-            <ul>
+            <ul class="unlisted pl-2">
                 <li v-for="(sub, index) in subTitles">
-                   <nuxt-link :to="`/titles/${title}?st=${index}`" replace>{{ sub }}</nuxt-link>
+                    <nuxt-link :to="{path: `/titles/${title}`, query: {st: index}}" replace exact tag="a">
+                        <v-icon class="active-visible">volume_up</v-icon>
+                        {{ sub }}
+                    </nuxt-link>
                 </li>
             </ul>
         </v-flex>
     </v-layout>
 </template>
+
+<style>
+    :not(.nuxt-link-exact-active)>.active-visible {
+        visibility: hidden;
+    }
+    .unlisted {
+        list-style: none;
+    }
+</style>
 
 <script>
   export default {
