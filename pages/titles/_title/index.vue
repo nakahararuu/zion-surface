@@ -1,6 +1,6 @@
 <template>
-  <VLayout column>
-    <VFlex>
+  <v-layout column>
+    <v-flex>
       <div>
         <div
           class="video-player-box"
@@ -8,23 +8,23 @@
           v-video-player:myVideoPlayer="playerOptions"
         />
       </div>
-    </VFlex>
-    <VFlex mt-5>
+    </v-flex>
+    <v-flex mt-5>
       <ul class="unlisted pl-2">
         <li v-for="(sub, index) in subTitles" :key="index">
-          <NuxtLink
+          <nuxt-link
             :to="{ path: `/titles/${title}`, query: { st: index } }"
             replace
             exact
             tag="a"
           >
-            <VIcon class="active-visible">volume_up</VIcon>
+            <v-icon class="active-visible">volume_up</v-icon>
             {{ sub }}
-          </NuxtLink>
+          </nuxt-link>
         </li>
       </ul>
-    </VFlex>
-  </VLayout>
+    </v-flex>
+  </v-layout>
 </template>
 
 <style>

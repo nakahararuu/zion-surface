@@ -1,7 +1,7 @@
 <template>
-  <VLayout column justify-center>
-    <VFlex xs12 sm8 md6 py-3 pl-5>
-      <RecycleScroller
+  <v-layout column justify-center>
+    <v-flex xs12 sm8 md6 py-3 pl-5>
+      <recycle-scroller
         class="scroller"
         :items="titles"
         :item-height="50"
@@ -10,11 +10,11 @@
         page-mode
       >
         <div class="title" slot-scope="{ item }">
-          <NuxtLink :to="'titles/' + item.title">{{ item.title }}</NuxtLink>
+          <nuxt-link :to="'titles/' + item.title">{{ item.title }}</nuxt-link>
         </div>
-      </RecycleScroller>
-    </VFlex>
-  </VLayout>
+      </recycle-scroller>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>

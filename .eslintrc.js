@@ -18,8 +18,9 @@ module.exports = {
   rules: {
     "semi": [2, "never"],
     "no-console": "off",
-    "vue/max-attributes-per-line": "off",
     "prettier/prettier": ["error", { "semi": false }],
-    "vue/singleline-html-element-content-newline": "off"
+    "vue/max-attributes-per-line": "off",
+    "vue/singleline-html-element-content-newline": "off",
+    "vue/component-name-in-template-casing": ["error", "kebab-case"]
   }
 }

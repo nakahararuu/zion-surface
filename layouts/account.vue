@@ -1,9 +1,9 @@
 <template>
-  <VApp dark>
-    <VContent>
-      <VContainer fluid fill-height>
-        <VLayout align-center justify-center> <Nuxt /> </VLayout>
-      </VContainer>
-    </VContent>
-  </VApp>
+  <v-app dark>
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout align-center justify-center> <nuxt /> </v-layout>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
