@@ -40,6 +40,7 @@
 export default {
   beforeRouteUpdate(to, from, next) {
     this.playedSubTitleNum = +to.query.st
+    this.autoPlay = !!to.query.ap
     next()
   },
   computed: {
@@ -73,15 +74,28 @@ export default {
     return {
       title: params.title,
       playedSubTitleNum,
-      subTitles: subTitles.subtitleArray
+      subTitles: subTitles.subtitleArray,
+      autoPlay: !!query.ap
     }
   },
   mounted() {
-    console.log('this is current player instance object', this.myVideoPlayer)
+    if (this.autoPlay) {
+      this.myVideoPlayer.play()
+    }
   },
   methods: {
-    onPlayerEnded(/*player*/) {
-      // TODO 次の動画に
+    onPlayerEnded() {
+      if (this.subTitles.length <= this.playedSubTitleNum) return
+
+      this.$router.replace(
+        {
+          path: this.$route.path,
+          query: { st: ++this.playedSubTitleNum, ap: true }
+        },
+        () => {
+          if (this.autoPlay) this.myVideoPlayer.play()
+        }
+      )
     }
   }
 }
