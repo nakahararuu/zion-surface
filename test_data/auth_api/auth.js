@@ -1,6 +1,6 @@
-const express = require("express")
-const bodyParser = require("body-parser")
-const cookieParser = require("cookie-parser")
+const express = require('express')
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 
 // Create app
 const app = express()
@@ -10,14 +10,14 @@ app.use(cookieParser())
 app.use(bodyParser.json())
 
 // [GET] /user
-app.get("/user", (req, res) => {
-  res.json({ user: "user" })
+app.get('/user', (req, res) => {
+  res.json({ user: 'user' })
 })
 
 // -- export app --
 module.exports = {
-  path: "/",
+  path: '/',
   handler: app
 }
 
-app.listen(3000, "0.0.0.0")
+app.listen(3000, '0.0.0.0')

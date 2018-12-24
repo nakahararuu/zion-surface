@@ -47,11 +47,11 @@ export default {
     return {
       drawer: false,
       items: [
-        { icon: "apps", title: "All", to: "/" },
-        { icon: "bubble_chart", title: "Recent", to: "/recent" }
+        { icon: 'apps', title: 'All', to: '/' },
+        { icon: 'bubble_chart', title: 'Recent', to: '/recent' }
       ],
       miniVariant: false,
-      title: "ちゃアニ Neo"
+      title: 'ちゃアニ Neo'
     }
   }
 }

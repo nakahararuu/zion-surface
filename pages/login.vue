@@ -39,17 +39,17 @@ export default {
       password: null
     }
   },
-  layout: "account",
+  layout: 'account',
   methods: {
     login: function() {
       this.$auth
-        .loginWith("local", {
+        .loginWith('local', {
           data: {
             username: this.username,
             password: this.password
           }
         })
-        .then(() => this.$router.replace({ path: "/" }))
+        .then(() => this.$router.replace({ path: '/' }))
     }
   }
 }

@@ -20,7 +20,7 @@
 <script>
 export default {
   async asyncData({ app }) {
-    const data = await app.$axios.$get("/json/getTitleArray.php")
+    const data = await app.$axios.$get('/json/getTitleArray.php')
     const titles = data.titleArray.filter(title => title.seasonable)
     return { titles }
   }

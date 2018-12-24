@@ -22,7 +22,7 @@
 <script>
 export default {
   async asyncData({ app }) {
-    const data = await app.$axios.$get("/json/getTitleArray.php")
+    const data = await app.$axios.$get('/json/getTitleArray.php')
     return { titles: data.titleArray }
   }
 }

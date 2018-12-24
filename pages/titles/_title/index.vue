@@ -45,13 +45,13 @@ export default {
   computed: {
     playerOptions() {
       return {
-        preload: "auto",
-        language: "ja",
+        preload: 'auto',
+        language: 'ja',
         fluid: true,
         playbackRates: [0.7, 1.0, 1.5, 2.0],
         sources: [
           {
-            type: "video/mp4",
+            type: 'video/mp4',
             src: `/movie/${this.title}/${
               this.subTitles[this.playedSubTitleNum || 0]
             }`
@@ -71,7 +71,7 @@ export default {
     }
   },
   mounted() {
-    console.log("this is current player instance object", this.myVideoPlayer)
+    console.log('this is current player instance object', this.myVideoPlayer)
   },
   methods: {
     onPlayerEnded(/*player*/) {
