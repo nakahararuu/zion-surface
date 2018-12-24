@@ -39,7 +39,8 @@
 <script>
 export default {
   beforeRouteUpdate(to, from, next) {
-    this.playedSubTitleNum = to.query.st
+    this.playedSubTitleNum = +to.query.st
+    this.autoPlay = !!to.query.ap
     next()
   },
   computed: {
@@ -53,7 +54,7 @@ export default {
           {
             type: 'video/mp4',
             src: `/movie/${this.title}/${
-              this.subTitles[this.playedSubTitleNum || 0]
+              this.subTitles[this.playedSubTitleNum]
             }`
           }
         ]
@@ -64,18 +65,37 @@ export default {
     const subTitles = await app.$axios.$get(
       `/json/getSubtitleArray.php?title=${params.title}`
     )
+
+    let playedSubTitleNum = 0
+    if (Number(query.st) && subTitles.subtitleArray.length >= +query.st) {
+      playedSubTitleNum = +query.st
+    }
+
     return {
       title: params.title,
-      playedSubTitleNum: query.st,
-      subTitles: subTitles.subtitleArray
+      playedSubTitleNum,
+      subTitles: subTitles.subtitleArray,
+      autoPlay: !!query.ap
     }
   },
   mounted() {
-    console.log('this is current player instance object', this.myVideoPlayer)
+    if (this.autoPlay) {
+      this.myVideoPlayer.play()
+    }
   },
   methods: {
-    onPlayerEnded(/*player*/) {
-      // TODO 次の動画に
+    onPlayerEnded() {
+      if (this.subTitles.length <= this.playedSubTitleNum) return
+
+      this.$router.replace(
+        {
+          path: this.$route.path,
+          query: { st: ++this.playedSubTitleNum, ap: true }
+        },
+        () => {
+          if (this.autoPlay) this.myVideoPlayer.play()
+        }
+      )
     }
   }
 }
