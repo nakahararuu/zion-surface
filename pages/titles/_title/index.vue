@@ -14,9 +14,8 @@
         <li v-for="(sub, index) in subTitles" :key="index">
           <nuxt-link
             :to="{ path: `/titles/${title}`, query: { st: index } }"
+            :class="{ 'active-link': index === playedSubTitleNum }"
             replace
-            exact
-            tag="a"
           >
             <v-icon class="active-visible">volume_up</v-icon>
             {{ sub }}
@@ -28,7 +27,7 @@
 </template>
 
 <style>
-:not(.nuxt-link-exact-active) > .active-visible {
+:not(.active-link) > .active-visible {
   visibility: hidden;
 }
 .unlisted {
