@@ -39,7 +39,7 @@
 <script>
 export default {
   beforeRouteUpdate(to, from, next) {
-    this.playedSubTitleNum = to.query.st
+    this.playedSubTitleNum = +to.query.st
     next()
   },
   computed: {
@@ -53,7 +53,7 @@ export default {
           {
             type: 'video/mp4',
             src: `/movie/${this.title}/${
-              this.subTitles[this.playedSubTitleNum || 0]
+              this.subTitles[this.playedSubTitleNum]
             }`
           }
         ]
@@ -64,9 +64,15 @@ export default {
     const subTitles = await app.$axios.$get(
       `/json/getSubtitleArray.php?title=${params.title}`
     )
+
+    let playedSubTitleNum = 0
+    if (Number(query.st) && subTitles.subtitleArray.length >= +query.st) {
+      playedSubTitleNum = +query.st
+    }
+
     return {
       title: params.title,
-      playedSubTitleNum: query.st,
+      playedSubTitleNum,
       subTitles: subTitles.subtitleArray
     }
   },
