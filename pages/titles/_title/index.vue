@@ -10,31 +10,29 @@
         />
       </div>
     </v-flex>
+
     <v-flex mt-5>
-      <ul class="unlisted pl-2">
-        <li v-for="(sub, index) in subTitles" :key="index">
-          <nuxt-link
-            :to="{ path: `/titles/${title}`, query: { st: index } }"
-            :class="{ 'active-link': index === playedSubTitleNum }"
-            replace
-          >
-            <v-icon class="active-visible">volume_up</v-icon>
-            {{ sub }}
-          </nuxt-link>
-        </li>
-      </ul>
+      <v-list>
+        <template v-for="(sub, index) in subTitles">
+          <v-list-tile :key="index">
+            <v-list-tile-action>
+              <v-icon v-if="index === playedSubTitleNum"> volume_up </v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <nuxt-link
+                :to="{ path: `/titles/${title}`, query: { st: index } }"
+                replace
+              >
+                {{ sub }}
+              </nuxt-link>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-divider :key="'divider' + index" />
+        </template>
+      </v-list>
     </v-flex>
   </v-layout>
 </template>
-
-<style>
-:not(.active-link) > .active-visible {
-  visibility: hidden;
-}
-.unlisted {
-  list-style: none;
-}
-</style>
 
 <script>
 export default {
