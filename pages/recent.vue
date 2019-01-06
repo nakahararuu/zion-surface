@@ -1,6 +1,6 @@
 <template>
   <v-layout column justify-center>
-    <v-flex xs12 sm8 md6 py-3 pl-5>
+    <v-flex xs12 sm8 md6 py-3>
       <v-list>
         <recycle-scroller
           class="scroller"
