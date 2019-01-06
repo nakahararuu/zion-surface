@@ -62,9 +62,9 @@ export default {
     }
   },
   async asyncData({ params, query, app }) {
-    const subTitles = await app.$axios.$get(
-      `/json/getSubtitleArray.php?title=${params.title}`
-    )
+    const subTitles = await app.$axios.$get('/json/getSubtitleArray.php', {
+      params: { title: params.title }
+    })
 
     let playedSubTitleNum = 0
     if (Number(query.st) && subTitles.subtitleArray.length >= +query.st) {
