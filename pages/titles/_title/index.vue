@@ -5,6 +5,7 @@
         <div
           class="video-player-box"
           @ended="onPlayerEnded($event)"
+          @canplay="onPlayerCanplay($event)"
           v-video-player:myVideoPlayer="playerOptions"
         />
       </div>
@@ -77,24 +78,19 @@ export default {
       autoPlay: !!query.ap
     }
   },
-  mounted() {
-    if (this.autoPlay) {
-      this.myVideoPlayer.play()
-    }
-  },
   methods: {
+    onPlayerCanplay() {
+      if (this.autoPlay) {
+        this.myVideoPlayer.play()
+      }
+    },
     onPlayerEnded() {
       if (this.subTitles.length <= this.playedSubTitleNum) return
 
-      this.$router.replace(
-        {
-          path: this.$route.path,
-          query: { st: ++this.playedSubTitleNum, ap: true }
-        },
-        () => {
-          if (this.autoPlay) this.myVideoPlayer.play()
-        }
-      )
+      this.$router.replace({
+        path: this.$route.path,
+        query: { st: ++this.playedSubTitleNum, ap: true }
+      })
     }
   }
 }
