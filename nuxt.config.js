@@ -24,6 +24,7 @@ export default {
   },
   plugins: [
     '~/plugins/vuetify.js',
+    '~/plugins/axios.js',
     { src: '~plugins/nuxt-video-player-plugin.js', ssr: false },
     { src: '~/plugins/vue-virtual-scroller.js', ssr: false } // TODO virtual scroller should support SSR
   ],

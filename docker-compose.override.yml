@@ -26,7 +26,10 @@ services:
     image: tarent/loginsrv
     expose:
       - '8080'
-    command: "-jwt-secret ${JWT_SECRET} -simple ${USER_NAME}=${PASSWORD}"
+    environment:
+      - LOGINSRV_BACKEND=provider=simple,${USER_NAME}=${PASSWORD}
+      - LOGINSRV_JWT_EXPIRY=${JWT_EXPIRY}
+      - LOGINSRV_JWT_SECRET=${JWT_SECRET}
     restart: always
   auth_dummy:
     image: 'node:8'
