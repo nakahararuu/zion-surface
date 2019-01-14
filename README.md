@@ -26,8 +26,3 @@ $ docker-compose -f docker-compose.yml up
     - with SSR
 - automatic HTTPS
 
-## TODO
-- filtering by title
-- play next title automatically
-- UI optimisation
-
