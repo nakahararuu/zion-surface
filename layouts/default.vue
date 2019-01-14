@@ -51,7 +51,7 @@ export default {
         { icon: 'bubble_chart', title: 'Recent', to: '/recent' }
       ],
       miniVariant: false,
-      title: 'ちゃアニ Neo'
+      title: 'ちゃど@anime'
     }
   }
 }
