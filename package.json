@@ -22,7 +22,9 @@
 		"nuxt": "^2.1.0",
 		"vue-video-player": "^5.0.2",
 		"vue-virtual-scroller": "^1.0.0-beta.2",
-		"vuetify": "^1.2.6"
+		"vuetify": "^1.2.6",
+		"stylus": "^0.54.5",
+		"stylus-loader": "^3.0.1"
 	},
 	"devDependencies": {
 		"babel-eslint": "^7.2.3",
@@ -39,9 +41,7 @@
 		"eslint-plugin-vue": "^5.0.0",
 		"husky": "^1.2.1",
 		"json-server": "^0.14.0",
-		"prettier": "^1.15.3",
-		"stylus": "^0.54.5",
-		"stylus-loader": "^3.0.1"
+		"prettier": "^1.15.3"
 	},
 	"config": {
 		"nuxt": {
