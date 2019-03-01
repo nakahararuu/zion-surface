@@ -1,0 +1,5 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '--build-arg', 'CORE_URL=https://tyad.nakahararuu.xyz', '-t', 'gcr.io/$PROJECT_ID/zion-surface', '.' ]
+images:
+  - 'gcr.io/$PROJECT_ID/zion-surface'
