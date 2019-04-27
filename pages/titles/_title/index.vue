@@ -52,8 +52,8 @@ export default {
           {
             type: 'video/mp4',
             src: `/movie/${this.title}/${
-              this.subTitles[this.playedSubTitleNum]
-            }`
+              encodeURIComponent(this.subTitles[this.playedSubTitleNum])
+            }.mp4?token=${this.jwt}`
           }
         ]
       }
@@ -73,7 +73,8 @@ export default {
       title: params.title,
       playedSubTitleNum,
       subTitles: subTitles.subtitleArray,
-      autoPlay: !!query.ap
+      autoPlay: !!query.ap,
+      jwt: app.$cookies.get('jwt_token')
     }
   },
   methods: {
