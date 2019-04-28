@@ -48,8 +48,7 @@ export default {
    */
   proxy: {
     '/auth': { target: process.env.CORE_URL, pathRewrite: { '^/auth/': '' } },
-    '/json': { target: process.env.CORE_URL },
-    '/movie': { target: process.env.CORE_URL }
+    '/json': { target: process.env.CORE_URL }
   },
   axios: {
     proxy: true
@@ -110,5 +109,11 @@ export default {
         })
       }
     }
+  },
+  /*
+   ** env
+   */
+  env: {
+    coreUrl: process.env.CORE_URL
   }
 }

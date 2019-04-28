@@ -43,6 +43,9 @@ export default {
   },
   computed: {
     playerOptions() {
+      const movieFileName = `${encodeURIComponent(this.subTitles[this.playedSubTitleNum])}.mp4`
+      const movieFileUrl = `${this.coreUrl}/movie/${this.title}/${movieFileName}?token=${this.jwt}`
+
       return {
         preload: 'auto',
         language: 'ja',
@@ -51,15 +54,13 @@ export default {
         sources: [
           {
             type: 'video/mp4',
-            src: `/movie/${this.title}/${
-              this.subTitles[this.playedSubTitleNum]
-            }`
+            src: movieFileUrl
           }
         ]
       }
     }
   },
-  async asyncData({ params, query, app }) {
+  async asyncData({ params, query, app, env }) {
     const subTitles = await app.$axios.$get('/json/getSubtitleArray.php', {
       params: { title: params.title }
     })
@@ -73,7 +74,9 @@ export default {
       title: params.title,
       playedSubTitleNum,
       subTitles: subTitles.subtitleArray,
-      autoPlay: !!query.ap
+      autoPlay: !!query.ap,
+      jwt: app.$cookies.get('jwt_token'),
+      coreUrl: env.coreUrl
     }
   },
   methods: {
