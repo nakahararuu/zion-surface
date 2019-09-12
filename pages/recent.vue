@@ -13,7 +13,7 @@
           <template slot-scope="{ item }">
             <v-list-tile>
               <v-list-tile-content>
-                <nuxt-link
+                <nuxt-link class="title-link"
                   :to="{ path: `/titles/${item.title}`, query: { st: 0 } }"
                 >
                   {{ item.title }}
@@ -27,6 +27,12 @@
     </v-flex>
   </v-layout>
 </template>
+
+<style scoped>
+.title-link {
+  color: white;
+}
+</style>
 
 <script>
 export default {

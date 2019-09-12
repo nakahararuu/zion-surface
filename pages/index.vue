@@ -20,6 +20,7 @@
                 <v-list-tile-content>
                   <nuxt-link
                     :to="{ path: `/titles/${item.title}`, query: { st: 0 } }"
+                    class="title-link"
                   >
                     {{ item.title }}
                   </nuxt-link>
@@ -33,6 +34,12 @@
     </v-layout>
   </div>
 </template>
+
+<style scoped>
+.title-link {
+  color: white;
+}
+</style>
 
 <script>
 export default {

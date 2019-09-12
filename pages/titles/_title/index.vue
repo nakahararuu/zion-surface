@@ -19,7 +19,7 @@
               <v-icon v-if="index === playedSubTitleNum"> volume_up </v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <nuxt-link
+              <nuxt-link class="title-link"
                 :to="{ path: `/titles/${title}`, query: { st: index } }"
                 replace
               >
@@ -33,6 +33,12 @@
     </v-flex>
   </v-layout>
 </template>
+
+<style scoped>
+.title-link {
+  color: white;
+}
+</style>
 
 <script>
 export default {
